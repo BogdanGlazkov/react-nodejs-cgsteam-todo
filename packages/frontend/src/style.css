@@ -1,0 +1,68 @@
+html {
+  overflow: scroll;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+iframe {
+  display: none;
+}
+
+.swiper {
+  left: 125px;
+  overflow: visible;
+}
+
+.form-input {
+  border: none;
+  width: 20%;
+  margin-left: 10px;
+}
+
+.form-input-mobile {
+  border: none;
+  border-bottom: 1px solid;
+  width: 40%;
+  font-size: 20px;
+  height: 40px;
+  align-self: center;
+}
+
+.form-input-error {
+  font-size: 20px;
+  color: red;
+  margin-left: 5px;
+}
+
+.form-input-error-tablet {
+  font-size: 20px;
+  color: red;
+  margin-left: 10px;
+}
+
+.checkbox {
+  width: 20px;
+}
+
+.checkbox-tablet {
+  width: 20px;
+  height: 20px;
+}
+
+.modal-input-mobile {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 40%;
+  font-size: 20px;
+  height: 40px;
+  align-self: center;
+}
