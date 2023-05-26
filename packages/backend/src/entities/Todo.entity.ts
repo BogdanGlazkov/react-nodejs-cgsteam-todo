@@ -1,9 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+// eslint-disable-next-line import/no-cycle
+import { User } from './User.entity';
 
-@Entity('todos')
+@Entity()
 export class Todo extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column()
   title: string;
@@ -12,8 +14,15 @@ export class Todo extends BaseEntity {
   description: string;
 
   @Column()
-  isCompleted: boolean;
+  completed: boolean;
 
   @Column()
-  isPrivate: boolean;
+  privateTodo: boolean;
+
+  @ManyToOne(() => User, (user) => user.todos)
+  @JoinColumn({ name: 'userId' })
+  user: User;
+
+  @Column()
+  userId: number;
 }

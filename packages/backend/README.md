@@ -23,7 +23,7 @@ The full folder structure of this app is explained below:
 | **node_modules**   | Contains all your npm dependencies                                                                                                                            |
 | **REST**           | Contains all API requests to test the routes, used with [REST Client VSCode extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) |
 | **src**            | Contains your source code that will be compiled to the dist dir                                                                                               |
-| **src/middleware** | Contains the middlewares to intercept requests                                                                                                                |
+| **src/tryCatchMiddleware** | Contains the middlewares to intercept requests                                                                                                                |
 | **src/models**     | Models define Mongoose schemas that will be used in storing and retrieving data from MongoDB                                                                  |
 | **src/routes**     | Routes define the endpoints of your API                                                                                                                       |
 | **src/types**      | Contains all your custom types to better handle type checking with TypeScript                                                                                 |

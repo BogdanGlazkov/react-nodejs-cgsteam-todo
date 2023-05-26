@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
-import { DataSource, DataSourceOptions } from 'typeorm';
 
-function getSSLConfig(env: string) {
+import { createConnection, DataSourceOptions } from 'typeorm';
+import 'dotenv/config';
+
+function getSSLConfig(env: string | any) {
   const configs: { [key: string]: boolean | { [key: string]: boolean } } = {
     production: { rejectUnauthorized: true },
     local: false,
@@ -12,8 +14,6 @@ function getSSLConfig(env: string) {
   }
   return configs[env];
 }
-
-let AppDataSource: DataSource;
 
 const connectDB = async () => {
   try {
@@ -28,19 +28,13 @@ const connectDB = async () => {
       database: process.env.POSTGRES_DB,
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
-      ssl: getSSLConfig(process.env.SERVER_MODE as string),
+      ssl: getSSLConfig(process.env.SERVER_MODE),
       synchronize: true
     };
-
-    AppDataSource = new DataSource(options);
-    await AppDataSource.initialize();
-    console.log('Postgresql connected...');
+    await createConnection(options);
+    console.log('Database Connected...');
   } catch (err) {
-    if (err instanceof Error) {
-      console.error(err.message);
-    } else {
-      console.error(err);
-    }
+    console.log((err as Error).message);
     // Exit process with failure
     process.exit(1);
   }
